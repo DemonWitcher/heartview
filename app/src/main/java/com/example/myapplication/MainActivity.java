@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.bt5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                simpleSweetHeartView0.test(1,10);
+                simpleSweetHeartView0.test(1,9);
             }
         });
     }

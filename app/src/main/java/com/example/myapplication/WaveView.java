@@ -87,30 +87,37 @@ public class WaveView extends View {
 
         mPath.reset();
         mPath.moveTo(0, (float) (WAVE_HEIGHT * 1.5));
-        if(current<5){
+        if(current<6){
             mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight());
+            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+15);
             mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
-        }else if(current==10||current==9){
+        }else if(current==10){
             mPath.lineTo(getMeasuredWidth()+20, (float) (WAVE_HEIGHT * 1.5));
             mPath.lineTo(getMeasuredWidth()+20,getMeasuredHeight()/3*2-15);
             mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+10);
             mPath.lineTo(-20,getMeasuredHeight()/3*2-15);
             mPath.lineTo(-20,(float) (WAVE_HEIGHT * 1.5));
         }
-        else if(current==8||current==7){
+        else if(current==8){
             mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth()+10,getMeasuredHeight()/3*2-15);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight());
-            mPath.lineTo(0,getMeasuredHeight()/3*2-15);
-            mPath.lineTo(-15,(float) (WAVE_HEIGHT * 1.5));
+            mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*4);
+            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+25);
+            mPath.lineTo(0,getMeasuredHeight()/10*4);
+            mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
         }
-        else if(current==5){
+        else if(current==9){
             mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth()+10,getMeasuredHeight()/3*2-15);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight());
-            mPath.lineTo(0,getMeasuredHeight()/3*2-15);
-            mPath.lineTo(-15,(float) (WAVE_HEIGHT * 1.5));
+            mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*5);
+            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+30);
+            mPath.lineTo(0,getMeasuredHeight()/10*5);
+            mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
+        }
+        else if(current==6||current==7){
+            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
+            mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*4);
+            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+15);
+            mPath.lineTo(0,getMeasuredHeight()/10*4);
+            mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
         }
         else{
             mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));

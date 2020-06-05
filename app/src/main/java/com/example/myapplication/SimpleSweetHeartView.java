@@ -133,14 +133,14 @@ public class SimpleSweetHeartView extends FrameLayout {
 //        };
         lv1Width = new int[]{1,
                 getMeasuredWidth() * 28 / 130,//0.01
-                getMeasuredWidth() * 40 / 130,//0.11
+                getMeasuredWidth() * 38 / 130,//0.11
                 getMeasuredWidth() * 58 / 130,//0.21
                 getMeasuredWidth() * 70 / 130,//0.31
-                getMeasuredWidth() * 80 / 130,//0.41
-                getMeasuredWidth() * 80 / 130,//0.51
-                getMeasuredWidth() * 88 / 130,//0.61
-                getMeasuredWidth() * 90 / 130,//0.71
-                getMeasuredWidth() * 90 / 130,//0.81
+                getMeasuredWidth() * 85 / 130,//0.41
+                getMeasuredWidth() * 90 / 130,//0.51
+                getMeasuredWidth() * 94 / 130,//0.61
+                getMeasuredWidth() * 95 / 130,//0.71
+                getMeasuredWidth() * 95 / 130,//0.81
                 getMeasuredWidth() * 90 / 130//0.91
         };
         lv1Height = new int[]{1,
@@ -180,11 +180,6 @@ public class SimpleSweetHeartView extends FrameLayout {
 
     private void resetBottomShape(int current){
         waveView.setCurrent(current);
-        if(current<5){
-            waveView.setIsBottomDrawTriangle(true);
-        }else{
-            waveView.setIsBottomDrawTriangle(false);
-        }
     }
 
     private void resetWave2(int w, int h,int current) {
@@ -230,7 +225,7 @@ public class SimpleSweetHeartView extends FrameLayout {
                 float value = (float) animation.getAnimatedValue();
                 int currentWidth = (int) (lv1Width[start] + (offsetWidth * value));
                 int currentHeight = (int) (lv1Height[start] + (offsetHeight * value));
-                resetWave2(currentWidth, currentHeight,start);
+                resetWave2(currentWidth, currentHeight,target);
             }
         });
         valueAnimator.start();
