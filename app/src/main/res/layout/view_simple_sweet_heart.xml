@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:clipChildren="false"
+    android:layout_height="match_parent">
+
+    <com.example.myapplication.WaveView
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="26dp"
+
+        android:id="@+id/wave_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:id="@+id/iv_boder"
+        android:visibility="visible"
+        android:alpha="0.3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_lv1_boder" />
+
+
+</FrameLayout>

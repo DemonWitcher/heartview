@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical">
+
+    <com.example.myapplication.SimpleSweetHeartView
+        android:id="@+id/sshv0"
+        android:layout_width="130dp"
+        android:layout_height="130dp" />
+
+    <SeekBar
+        android:id="@+id/sb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></SeekBar>
+
+    <TextView
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:id="@+id/tv"
+        android:text="47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></TextView>
+
+    <Button
+        android:id="@+id/bt1"
+        android:text="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/bt2"
+        android:text="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/bt3"
+        android:text="3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/bt4"
+        android:text="4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/bt5"
+        android:text="t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
