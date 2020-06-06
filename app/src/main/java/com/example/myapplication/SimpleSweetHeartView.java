@@ -57,7 +57,6 @@ public class SimpleSweetHeartView extends FrameLayout {
         waveView = findViewById(R.id.wave_view);
         fillView = findViewById(R.id.fill_view);
 
-        // TODO: 2020/6/5 记得动态修改marginBottom
     }
 
     private void resetRes() {
@@ -67,8 +66,8 @@ public class SimpleSweetHeartView extends FrameLayout {
                 borderView.setImageResource(R.mipmap.ic_lv0_boder);
                 waveView.setHeartColor(Color.parseColor("#F5515F"), Color.parseColor("#F140AA"));
                 fillView.setHeartColor(Color.parseColor("#F5515F"), Color.parseColor("#F140AA"));
-                lp.width = L.dp2px(getContext(), 130);
-                lp.height = L.dp2px(getContext(), 130);
+                lp.width = L.dp2px(getContext(), 30);
+                lp.height = L.dp2px(getContext(), 30);
             }
             break;
             case 1: {
@@ -96,14 +95,14 @@ public class SimpleSweetHeartView extends FrameLayout {
             }
             break;
         }
-        resetArr();
+        resetSize();
         waveView.requestLayout();
         waveView.invalidate();
         requestLayout();
         invalidate();
     }
 
-    private void resetArr(){
+    private void resetSize(){
         lv1Width = new int[]{1,
                 getMeasuredWidth() * 28 / 130,//0.01
                 getMeasuredWidth() * 42 / 130,//0.11
@@ -140,12 +139,18 @@ public class SimpleSweetHeartView extends FrameLayout {
             lp.width = getMeasuredWidth() * 95 / 130;
             lp.height = getMeasuredHeight() * 80 / 130;
         }
+
+        LayoutParams waveViewLp = (LayoutParams) waveView.getLayoutParams();
+        waveViewLp.bottomMargin = getMeasuredHeight() * 26 / 130;
+
+        LayoutParams fillViewLp = (LayoutParams) fillView.getLayoutParams();
+        fillViewLp.bottomMargin = getMeasuredHeight() * 26 / 130;
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        resetArr();
+        resetSize();
     }
 
     int[] lv1Width = new int[11];

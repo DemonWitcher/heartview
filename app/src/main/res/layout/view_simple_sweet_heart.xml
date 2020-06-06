@@ -6,13 +6,11 @@
     <com.example.myapplication.FillView
         android:id="@+id/fill_view"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="26dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <com.example.myapplication.WaveView
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="26dp"
         android:id="@+id/wave_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

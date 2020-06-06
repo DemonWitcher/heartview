@@ -32,11 +32,9 @@ public class WaveView extends View {
         init();
     }
 
-    public static final int WAVE_HEIGHT = 20;//二阶贝塞尔曲线控制点和终点落差
+    public static int waveHeight = 20;
 
     private int mWaveLength;
-    //    private int mViewWidth;
-//    private int mCenterY;
     private int mWaveCount;
     private int offset;
 
@@ -49,7 +47,6 @@ public class WaveView extends View {
     private int current;//当前的档位
 
     private void init() {
-
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -59,76 +56,62 @@ public class WaveView extends View {
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        // 需要计算出屏幕能容纳多少个波形
-//        mPath = new Path();
-//        mViewWidth = w;
-//        mCenterY = h-WAVE_HEIGHT;
-//        mWaveCount = (int) Math.round(mViewWidth / mWaveLength + 1.5); // 计算波形的个数
-    }
-
-    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-//        L.i("w:" + getMeasuredWidth() + ",h:" + getMeasuredHeight());
-        mWaveCount = (int) Math.round(getMeasuredWidth()/ mWaveLength + 1.5); // 计算波形的个数
+        L.i("w:" + getMeasuredWidth() + ",h:" + getMeasuredHeight());
+        mWaveCount = (int) Math.round(getMeasuredWidth() / mWaveLength + 1.5); // 计算波形的个数
 
-        LinearGradient backGradient = new LinearGradient(getMeasuredWidth() / 2, WAVE_HEIGHT,
+        LinearGradient backGradient = new LinearGradient(getMeasuredWidth() / 2, waveHeight,
                 getMeasuredWidth() / 2, getMeasuredHeight(),
                 new int[]{mStartColor, mEndColor},
                 null, Shader.TileMode.CLAMP);
         mPaint.setShader(backGradient);
 
         mPath.reset();
-        mPath.moveTo(0, (float) (WAVE_HEIGHT * 1.5));
-        if(current<6){
-            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),8));
-            mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
-        }
-        else if(current==10){
-            mPath.lineTo(getMeasuredWidth()+L.dp2px(getContext(),10), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth()+L.dp2px(getContext(),10),getMeasuredHeight()/3*2-15);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),5));
-            mPath.lineTo(-L.dp2px(getContext(),10),getMeasuredHeight()/3*2-L.dp2px(getContext(),8));
-            mPath.lineTo(-L.dp2px(getContext(),10),(float) (WAVE_HEIGHT * 1.5));
-        }
-        else if(current==9){
-            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*5);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),15));
-            mPath.lineTo(0,getMeasuredHeight()/10*5);
-            mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
-        }
-        else if(current==8){
-            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*4);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),13));
-            mPath.lineTo(0,getMeasuredHeight()/10*4);
-            mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
-        }
-        else if(current==6||current==7){
-            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*4);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),8));
-            mPath.lineTo(0,getMeasuredHeight()/10*4);
-            mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
+        mPath.moveTo(0, (float) (waveHeight * 1.5));
+        if (current < 6) {
+            mPath.lineTo(getMeasuredWidth(), (float) (waveHeight * 1.5));
+            mPath.lineTo(getMeasuredWidth() / 2, getMeasuredHeight() + getMeasuredHeight() / 57 * 16);
+            mPath.lineTo(0, (float) (waveHeight * 1.5));
+        } else if (current == 10) {//258*240
+            mPath.lineTo(getMeasuredWidth() + getMeasuredWidth() / 12, (float) (waveHeight * 1.5));
+            mPath.lineTo(getMeasuredWidth() + getMeasuredWidth() / 12, getMeasuredHeight() / 3 * 2 - 15);
+            mPath.lineTo(getMeasuredWidth() / 2, getMeasuredHeight() + getMeasuredHeight() / 24);
+            mPath.lineTo(-getMeasuredWidth() / 12, getMeasuredHeight() / 3 * 2 - getMeasuredHeight() / 30);
+            mPath.lineTo(-getMeasuredWidth() / 12, (float) (waveHeight * 1.5));
+        } else if (current == 9) {//285*216
+            mPath.lineTo(getMeasuredWidth(), (float) (waveHeight * 1.5));
+            mPath.lineTo(getMeasuredWidth(), getMeasuredHeight() / 10 * 5);
+            mPath.lineTo(getMeasuredWidth() / 2, getMeasuredHeight() + getMeasuredHeight() / 7);
+            mPath.lineTo(0, getMeasuredHeight() / 10 * 5);
+            mPath.lineTo(0, (float) (waveHeight * 1.5));
+        } else if (current == 8) {//285*192
+            mPath.lineTo(getMeasuredWidth(), (float) (waveHeight * 1.5));
+            mPath.lineTo(getMeasuredWidth(), getMeasuredHeight() / 10 * 4);
+            mPath.lineTo(getMeasuredWidth() / 2, getMeasuredHeight() + getMeasuredHeight() / 96 * 13);
+            mPath.lineTo(0, getMeasuredHeight() / 10 * 4);
+            mPath.lineTo(0, (float) (waveHeight * 1.5));
+        } else if (current == 6 || current == 7) {//282*168
+            mPath.lineTo(getMeasuredWidth(), (float) (waveHeight * 1.5));
+            mPath.lineTo(getMeasuredWidth(), getMeasuredHeight() / 10 * 4);
+            mPath.lineTo(getMeasuredWidth() / 2, getMeasuredHeight() + getMeasuredHeight() / 21 * 2);
+            mPath.lineTo(0, getMeasuredHeight() / 10 * 4);
+            mPath.lineTo(0, (float) (waveHeight * 1.5));
         }
 //        else{
-//            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-//            mPath.arcTo(0, -getMeasuredHeight() + (float) (WAVE_HEIGHT * 3), getMeasuredWidth(), getMeasuredHeight(), 0, 180, false);
+//            mPath.lineTo(getMeasuredWidth(), (float) (waveHeight * 1.5));
+//            mPath.arcTo(0, -getMeasuredHeight() + (float) (waveHeight * 3), getMeasuredWidth(), getMeasuredHeight(), 0, 180, false);
 //        }
 
         canvas.drawPath(mPath, mPaint);
 
-        mPath.moveTo(-mWaveLength, WAVE_HEIGHT + 1);
+        mPath.moveTo(-mWaveLength, waveHeight + 1);
         for (int i = 0; i < mWaveCount; i++) {
-            mPath.quadTo(-mWaveLength * 3 / 4 + i * mWaveLength + offset, WAVE_HEIGHT + WAVE_HEIGHT, -mWaveLength / 2 + i * mWaveLength + offset, WAVE_HEIGHT);
-            mPath.quadTo(-mWaveLength / 4 + i * mWaveLength + offset, 0, i * mWaveLength + offset, WAVE_HEIGHT);
+            mPath.quadTo(-mWaveLength * 3 / 4 + i * mWaveLength + offset, waveHeight + waveHeight, -mWaveLength / 2 + i * mWaveLength + offset, waveHeight);
+            mPath.quadTo(-mWaveLength / 4 + i * mWaveLength + offset, 0, i * mWaveLength + offset, waveHeight);
         }
-        mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-        mPath.lineTo(0, (float) (WAVE_HEIGHT * 1.5));
+        mPath.lineTo(getMeasuredWidth(), (float) (waveHeight * 1.5));
+        mPath.lineTo(0, (float) (waveHeight * 1.5));
         mPath.close();
         canvas.drawPath(mPath, mPaint);
     }

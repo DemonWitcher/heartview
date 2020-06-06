@@ -44,7 +44,7 @@ public class FillView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        LinearGradient backGradient = new LinearGradient(getMeasuredWidth() / 2, WaveView.WAVE_HEIGHT,
+        LinearGradient backGradient = new LinearGradient(getMeasuredWidth() / 2, WaveView.waveHeight,
                 getMeasuredWidth() / 2, getMeasuredHeight(),
                 new int[]{mStartColor, mEndColor},
 //                new int[]{Color.GREEN, Color.GREEN},
