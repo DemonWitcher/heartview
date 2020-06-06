@@ -46,7 +46,6 @@ public class WaveView extends View {
 
     private int mStartColor, mEndColor;
 
-    private boolean mIsBottomDrawTriangle;//true为波浪下面拼三角 false为波浪下面拼半圆
     private int current;//当前的档位
 
     private void init() {
@@ -69,15 +68,11 @@ public class WaveView extends View {
 //        mWaveCount = (int) Math.round(mViewWidth / mWaveLength + 1.5); // 计算波形的个数
     }
 
-    /**
-     * startAngie和sweepAngle递增
-     * 波浪宽度递增
-     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        L.i("w:" + getMeasuredWidth() + ",h:" + getMeasuredHeight());
-        mWaveCount = (int) Math.round(getMeasuredWidth() / mWaveLength + 1.5); // 计算波形的个数
+//        L.i("w:" + getMeasuredWidth() + ",h:" + getMeasuredHeight());
+        mWaveCount = (int) Math.round(getMeasuredWidth()/ mWaveLength + 1.5); // 计算波形的个数
 
         LinearGradient backGradient = new LinearGradient(getMeasuredWidth() / 2, WAVE_HEIGHT,
                 getMeasuredWidth() / 2, getMeasuredHeight(),
@@ -89,41 +84,41 @@ public class WaveView extends View {
         mPath.moveTo(0, (float) (WAVE_HEIGHT * 1.5));
         if(current<6){
             mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+15);
+            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),8));
             mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
-        }else if(current==10){
-            mPath.lineTo(getMeasuredWidth()+20, (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth()+20,getMeasuredHeight()/3*2-15);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+10);
-            mPath.lineTo(-20,getMeasuredHeight()/3*2-15);
-            mPath.lineTo(-20,(float) (WAVE_HEIGHT * 1.5));
         }
-        else if(current==8){
-            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*4);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+25);
-            mPath.lineTo(0,getMeasuredHeight()/10*4);
-            mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
+        else if(current==10){
+            mPath.lineTo(getMeasuredWidth()+L.dp2px(getContext(),10), (float) (WAVE_HEIGHT * 1.5));
+            mPath.lineTo(getMeasuredWidth()+L.dp2px(getContext(),10),getMeasuredHeight()/3*2-15);
+            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),5));
+            mPath.lineTo(-L.dp2px(getContext(),10),getMeasuredHeight()/3*2-L.dp2px(getContext(),8));
+            mPath.lineTo(-L.dp2px(getContext(),10),(float) (WAVE_HEIGHT * 1.5));
         }
         else if(current==9){
             mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
             mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*5);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+30);
+            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),15));
             mPath.lineTo(0,getMeasuredHeight()/10*5);
+            mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
+        }
+        else if(current==8){
+            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
+            mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*4);
+            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),13));
+            mPath.lineTo(0,getMeasuredHeight()/10*4);
             mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
         }
         else if(current==6||current==7){
             mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
             mPath.lineTo(getMeasuredWidth(),getMeasuredHeight()/10*4);
-            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+15);
+            mPath.lineTo(getMeasuredWidth()/2,getMeasuredHeight()+L.dp2px(getContext(),8));
             mPath.lineTo(0,getMeasuredHeight()/10*4);
             mPath.lineTo(0,(float) (WAVE_HEIGHT * 1.5));
         }
-        else{
-            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
-            mPath.arcTo(0, -getMeasuredHeight() + (float) (WAVE_HEIGHT * 3), getMeasuredWidth(), getMeasuredHeight(), 0, 180, false);
-        }
-//        mPath.arcTo(0, -getMeasuredHeight() + (float) (WAVE_HEIGHT * 3)-30, getMeasuredWidth(), getMeasuredHeight(), -20, 200, false);
+//        else{
+//            mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
+//            mPath.arcTo(0, -getMeasuredHeight() + (float) (WAVE_HEIGHT * 3), getMeasuredWidth(), getMeasuredHeight(), 0, 180, false);
+//        }
 
         canvas.drawPath(mPath, mPaint);
 
@@ -134,8 +129,6 @@ public class WaveView extends View {
         }
         mPath.lineTo(getMeasuredWidth(), (float) (WAVE_HEIGHT * 1.5));
         mPath.lineTo(0, (float) (WAVE_HEIGHT * 1.5));
-//        mPath.lineTo(getMeasuredWidth()/2, (float) (WAVE_HEIGHT*1.5));
-//        mPath.lineTo(0, 0);
         mPath.close();
         canvas.drawPath(mPath, mPaint);
     }
@@ -144,7 +137,6 @@ public class WaveView extends View {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         start();
-
     }
 
     @Override
@@ -179,7 +171,4 @@ public class WaveView extends View {
         mEndColor = endColor;
     }
 
-    public void setIsBottomDrawTriangle(boolean mIsBottomDrawTriangle) {
-        this.mIsBottomDrawTriangle = mIsBottomDrawTriangle;
-    }
 }
