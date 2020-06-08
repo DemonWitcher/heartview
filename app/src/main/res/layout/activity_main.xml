@@ -49,4 +49,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <com.example.myapplication.AnimSweetHeartView
+        android:layout_marginRight="30dp"
+        android:layout_gravity="right"
+        android:id="@+id/s2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btanim"
+        android:text="anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

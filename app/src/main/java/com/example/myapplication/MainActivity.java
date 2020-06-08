@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         int lv = 0;
 
         final SweetHeartView simpleSweetHeartView0 = findViewById(R.id.sshv0);
+        final AnimSweetHeartView animSweetHeartView = findViewById(R.id.s2);
+
         simpleSweetHeartView0.setLevel(lv);
         simpleSweetHeartView0.setProgress(47,true);
         simpleSweetHeartView0.setMax(100);
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(fromUser){
                     simpleSweetHeartView0.setProgress(progress,false);
+                    animSweetHeartView.setProgress(progress,false);
                 }
                 tv.setText(progress+"");
             }
@@ -75,6 +78,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 simpleSweetHeartView0.setProgress(100,true);
+                animSweetHeartView.setProgress(100,true);
+            }
+        });
+
+
+        animSweetHeartView.setLevel(0);
+        animSweetHeartView.setMax(100);
+        animSweetHeartView.setProgress(50,false);
+
+        findViewById(R.id.btanim).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animSweetHeartView.setProgress(100,true);
             }
         });
     }
