@@ -14,9 +14,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int lv = 1;
+        int lv = 0;
 
-        final SimpleSweetHeartView simpleSweetHeartView0 = findViewById(R.id.sshv0);
+        final SweetHeartView simpleSweetHeartView0 = findViewById(R.id.sshv0);
         simpleSweetHeartView0.setLevel(lv);
         simpleSweetHeartView0.setProgress(47,true);
         simpleSweetHeartView0.setMax(100);
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(fromUser){
-                    simpleSweetHeartView0.setProgress(progress,true);
+                    simpleSweetHeartView0.setProgress(progress,false);
                 }
                 tv.setText(progress+"");
             }
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.bt5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                simpleSweetHeartView0.setProgress(99,true);
+                simpleSweetHeartView0.setProgress(100,true);
             }
         });
     }

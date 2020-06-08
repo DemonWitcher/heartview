@@ -5,10 +5,10 @@
     android:background="#000000"
     android:orientation="vertical">
 
-    <com.example.myapplication.SimpleSweetHeartView
+    <com.example.myapplication.SweetHeartView
         android:id="@+id/sshv0"
-        android:layout_width="130dp"
-        android:layout_height="130dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <SeekBar
         android:id="@+id/sb"

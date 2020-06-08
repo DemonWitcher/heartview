@@ -65,7 +65,7 @@ public class SimpleSweetHeartView extends FrameLayout {
             case 0: {
                 borderView.setImageResource(R.mipmap.ic_lv0_boder);
                 waveView.setHeartColor(Color.parseColor("#F5515F"), Color.parseColor("#F140AA"));
-                fillView.setHeartColor(Color.parseColor("#F5515F"), Color.parseColor("#F140AA"));
+//                fillView.setHeartColor(Color.parseColor("#F5515F"), Color.parseColor("#F140AA"));
                 lp.width = L.dp2px(getContext(), 130);
                 lp.height = L.dp2px(getContext(), 130);
             }
@@ -73,7 +73,7 @@ public class SimpleSweetHeartView extends FrameLayout {
             case 1: {
                 borderView.setImageResource(R.mipmap.ic_lv1_boder);
                 waveView.setHeartColor(Color.parseColor("#B696E2"), Color.parseColor("#7DE1F9"));
-                fillView.setHeartColor(Color.parseColor("#B696E2"), Color.parseColor("#7DE1F9"));
+//                fillView.setHeartColor(Color.parseColor("#B696E2"), Color.parseColor("#7DE1F9"));
                 lp.width = L.dp2px(getContext(), 130);
                 lp.height = L.dp2px(getContext(), 130);
             }
@@ -81,7 +81,7 @@ public class SimpleSweetHeartView extends FrameLayout {
             case 2: {
                 borderView.setImageResource(R.mipmap.ic_lv2_boder);
                 waveView.setHeartColor(Color.parseColor("#FFE200"), Color.parseColor("#FFAB00"));
-                fillView.setHeartColor(Color.parseColor("#FFE200"), Color.parseColor("#FFAB00"));
+//                fillView.setHeartColor(Color.parseColor("#FFE200"), Color.parseColor("#FFAB00"));
                 lp.width = L.dp2px(getContext(), 130);
                 lp.height = L.dp2px(getContext(), 130);
             }
@@ -89,7 +89,7 @@ public class SimpleSweetHeartView extends FrameLayout {
             case 3: {
                 borderView.setImageResource(R.mipmap.ic_lv3_boder);
                 waveView.setHeartColor(Color.parseColor("#D631E1"), Color.parseColor("#814FFF"));
-                fillView.setHeartColor(Color.parseColor("#D631E1"), Color.parseColor("#814FFF"));
+//                fillView.setHeartColor(Color.parseColor("#D631E1"), Color.parseColor("#814FFF"));
                 lp.width = L.dp2px(getContext(), 182);
                 lp.height = L.dp2px(getContext(), 130);
             }
