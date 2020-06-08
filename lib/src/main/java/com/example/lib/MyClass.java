@@ -2,7 +2,7 @@ package com.example.lib;
 
 public class MyClass {
     public static void main(String[] args) {
-        System.out.println(percent2int(0.99f));
+       new T();
     }
 
     private static int percent2int(float percent){

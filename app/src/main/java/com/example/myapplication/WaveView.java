@@ -32,7 +32,7 @@ public class WaveView extends View {
         init();
     }
 
-    public static int waveHeight = 20;
+    public  int waveHeight = 20;
 
     private int mWaveLength;
     private int mWaveCount;
@@ -51,8 +51,9 @@ public class WaveView extends View {
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaint.setStrokeWidth(1);
-        mWaveLength = 300;
+        mWaveLength = L.dp2px(getContext(),100);
         mPath = new Path();
+        waveHeight = L.dp2px(getContext(),7);
     }
 
     @Override

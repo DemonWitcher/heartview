@@ -66,8 +66,8 @@ public class SimpleSweetHeartView extends FrameLayout {
                 borderView.setImageResource(R.mipmap.ic_lv0_boder);
                 waveView.setHeartColor(Color.parseColor("#F5515F"), Color.parseColor("#F140AA"));
                 fillView.setHeartColor(Color.parseColor("#F5515F"), Color.parseColor("#F140AA"));
-                lp.width = L.dp2px(getContext(), 30);
-                lp.height = L.dp2px(getContext(), 30);
+                lp.width = L.dp2px(getContext(), 130);
+                lp.height = L.dp2px(getContext(), 130);
             }
             break;
             case 1: {
@@ -140,11 +140,11 @@ public class SimpleSweetHeartView extends FrameLayout {
             lp.height = getMeasuredHeight() * 80 / 130;
         }
 
-        LayoutParams waveViewLp = (LayoutParams) waveView.getLayoutParams();
-        waveViewLp.bottomMargin = getMeasuredHeight() * 26 / 130;
-
-        LayoutParams fillViewLp = (LayoutParams) fillView.getLayoutParams();
-        fillViewLp.bottomMargin = getMeasuredHeight() * 26 / 130;
+//        LayoutParams waveViewLp = (LayoutParams) waveView.getLayoutParams();
+//        waveViewLp.bottomMargin = getMeasuredHeight() * 26 / 130;
+//
+//        LayoutParams fillViewLp = (LayoutParams) fillView.getLayoutParams();
+//        fillViewLp.bottomMargin = getMeasuredHeight() * 26 / 130;
     }
 
     @Override
