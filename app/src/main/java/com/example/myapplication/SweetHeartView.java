@@ -94,7 +94,7 @@ public class SweetHeartView extends FrameLayout {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 int value = (int) animation.getAnimatedValue();
-                fillView.setProgress(lastProgress+value);
+                fillView.setProgress(value);
             }
         });
         valueAnimator.start();
