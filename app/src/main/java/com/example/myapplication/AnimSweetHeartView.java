@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -80,7 +81,12 @@ public class AnimSweetHeartView extends FrameLayout {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 //放大动画(同时开始飘出心动画)-增长动画-结束动画
-                addProgressAnim(lastProgress);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        addProgressAnim(lastProgress);
+                    }
+                },1200);
             }
         });
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {

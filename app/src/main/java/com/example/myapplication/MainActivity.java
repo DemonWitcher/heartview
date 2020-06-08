@@ -82,15 +82,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         animSweetHeartView.setLevel(0);
         animSweetHeartView.setMax(100);
         animSweetHeartView.setProgress(50,false);
+
+       final AddSweetHeartView addSweetHeartView = findViewById(R.id.add);
 
         findViewById(R.id.btanim).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 animSweetHeartView.setProgress(100,true);
+                addSweetHeartView.add();
             }
         });
     }
