@@ -7,8 +7,8 @@
 
     <com.example.myapplication.SweetHeartView
         android:id="@+id/sshv0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="140dp"
+        android:layout_height="140dp" />
 
     <SeekBar
         android:id="@+id/sb"

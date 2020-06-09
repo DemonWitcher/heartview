@@ -78,7 +78,6 @@ public class FillView extends View {
 
     public void setMax(int max) {
         this.max = max;
-        invalidate();
     }
 
     public int getProgress() {

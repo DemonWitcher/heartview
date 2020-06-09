@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <com.example.myapplication.FillView
         android:id="@+id/fill_view"
-        android:layout_width="99dp"
-        android:layout_height="85dp"
+        android:layout_width="104dp"
+        android:layout_height="88dp"
         android:layout_gravity="center"
         />
 <!--    <ImageView-->
-<!--        android:layout_marginTop="4dp"-->
 <!--        android:src="@mipmap/ic_heart_fill0"-->
 <!--        android:layout_gravity="center"-->
-<!--        android:layout_width="95dp"-->
-<!--        android:layout_height="78dp"></ImageView>-->
-
+<!--        android:layout_width="104dp"-->
+<!--        android:layout_height="88dp"/>-->
     <ImageView
         android:id="@+id/iv_border"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_lv2_boder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/ic_lv3_boder"
         android:visibility="visible" />
-
 
 </FrameLayout>

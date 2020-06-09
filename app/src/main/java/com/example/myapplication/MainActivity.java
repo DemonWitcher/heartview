@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
         final AnimSweetHeartView animSweetHeartView = findViewById(R.id.s2);
 
         simpleSweetHeartView0.setLevel(lv);
-        simpleSweetHeartView0.setProgress(47,true);
-        simpleSweetHeartView0.setMax(100);
+        simpleSweetHeartView0.setProgress(100,47,true,false);
 
         SeekBar sb = findViewById(R.id.sb);
         final TextView tv = findViewById(R.id.tv);
@@ -32,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(fromUser){
-                    simpleSweetHeartView0.setProgress(progress,false);
-                    animSweetHeartView.setProgress(progress,false);
+                    simpleSweetHeartView0.setProgress(100,progress,false,false);
+                    animSweetHeartView.setProgress(100,progress,false,false);
                 }
                 tv.setText(progress+"");
             }
@@ -77,21 +76,20 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.bt5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                simpleSweetHeartView0.setProgress(100,true);
-                animSweetHeartView.setProgress(100,true);
+                simpleSweetHeartView0.setProgress(100,90,true,false);
+                animSweetHeartView.setProgress(100,100,true,false);
             }
         });
 
         animSweetHeartView.setLevel(0);
-        animSweetHeartView.setMax(100);
-        animSweetHeartView.setProgress(50,false);
+        animSweetHeartView.setProgress(100,50,false,false);
 
        final AddSweetHeartView addSweetHeartView = findViewById(R.id.add);
 
         findViewById(R.id.btanim).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                animSweetHeartView.setProgress(100,true);
+                animSweetHeartView.setProgress(100,99,true,false);
                 addSweetHeartView.add();
             }
         });
