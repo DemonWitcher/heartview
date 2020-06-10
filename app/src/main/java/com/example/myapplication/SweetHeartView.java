@@ -47,7 +47,8 @@ public class SweetHeartView extends FrameLayout {
         LayoutInflater.from(getContext()).inflate(R.layout.view_sweet_heart,this);
         borderView = findViewById(R.id.iv_border);
         fillView = findViewById(R.id.fill_view);
-
+        fillView.setmWaveLength(L.dp2px(getContext(),100));
+        fillView.setmWaveHeight(L.dp2px(getContext(),7));
     }
 
     private void resetRes() {

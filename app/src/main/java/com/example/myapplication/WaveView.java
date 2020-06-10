@@ -100,8 +100,8 @@ public class WaveView extends View {
             mPath.lineTo(0, (float) (waveHeight * 1.5));
         }
 //        else{
-//            mPath.lineTo(getMeasuredWidth(), (float) (waveHeight * 1.5));
-//            mPath.arcTo(0, -getMeasuredHeight() + (float) (waveHeight * 3), getMeasuredWidth(), getMeasuredHeight(), 0, 180, false);
+//            mPath.lineTo(getMeasuredWidth(), (float) (mWaveHeight * 1.5));
+//            mPath.arcTo(0, -getMeasuredHeight() + (float) (mWaveHeight * 3), getMeasuredWidth(), getMeasuredHeight(), 0, 180, false);
 //        }
 
         canvas.drawPath(mPath, mPaint);

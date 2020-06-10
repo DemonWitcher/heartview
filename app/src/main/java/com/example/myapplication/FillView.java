@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
@@ -45,8 +46,18 @@ public class FillView extends View {
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setStrokeWidth(1);
-    }
 
+        mWaveLength = L.dp2px(getContext(),100);
+        mPath = new Path();
+        mWaveHeight = L.dp2px(getContext(),7);
+    }
+    public int mWaveHeight;
+
+    private int mWaveLength;
+    private int mWaveCount;
+    private int offset;
+
+    private Path mPath;
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -63,13 +74,46 @@ public class FillView extends View {
                 null, Shader.TileMode.CLAMP);
         mPaint.setShader(backGradient);
 
-        canvas.drawRect(0, getMeasuredHeight()*percent+1, getMeasuredWidth(), getMeasuredHeight(), mPaint);
+
+        if(progress == max){
+            canvas.drawRect(0, getMeasuredHeight()*percent+1, getMeasuredWidth(), getMeasuredHeight(), mPaint);
+        }else{
+            mPath.reset();
+            mWaveCount = (int) Math.round(getMeasuredWidth() / mWaveLength + 1.5); // 计算波形的个数
+            mPath.moveTo(-mWaveLength,  getMeasuredHeight()*percent+1+ mWaveHeight + 1);
+            for (int i = 0; i < mWaveCount; i++) {
+                mPath.quadTo(-mWaveLength * 3 / 4 + i * mWaveLength + offset, mWaveHeight + mWaveHeight + getMeasuredHeight()*percent+1, -mWaveLength / 2 + i * mWaveLength + offset, mWaveHeight + getMeasuredHeight()*percent+1);
+                mPath.quadTo(-mWaveLength / 4 + i * mWaveLength + offset,  getMeasuredHeight()*percent+1, i * mWaveLength + offset, mWaveHeight + getMeasuredHeight()*percent+1);
+            }
+            mPath.lineTo(getMeasuredWidth(), getMeasuredHeight());
+            mPath.lineTo(0, getMeasuredHeight());
+            mPath.lineTo(0, (float) (mWaveHeight * 1.5)+ getMeasuredHeight()*percent+1);
+            mPath.close();
+            canvas.drawPath(mPath, mPaint);
+
+        }
 
         Rect src=new Rect(0, (int) (bitmapFillHeart.getHeight()*percent),bitmapFillHeart.getWidth(),bitmapFillHeart.getHeight());
         RectF rectF = new RectF(0,getMeasuredHeight()*percent,getMeasuredWidth(),getMeasuredHeight());
         mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         canvas.drawBitmap(bitmapFillHeart,src,rectF,mPaint);
         mPaint.setXfermode(null);
+    }
+
+    public int getmWaveHeight() {
+        return mWaveHeight;
+    }
+
+    public void setmWaveHeight(int mWaveHeight) {
+        this.mWaveHeight = mWaveHeight;
+    }
+
+    public int getmWaveLength() {
+        return mWaveLength;
+    }
+
+    public void setmWaveLength(int mWaveLength) {
+        this.mWaveLength = mWaveLength;
     }
 
     public int getMax() {
