@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--SwitchButton-->
+    <declare-styleable name="SweetHeartView">
+        <attr name="heartHeight" format="dimension"/>
+        <attr name="fillHeight" format="dimension"/>
+        <attr name="waveHeight" format="dimension"/>
+        <attr name="waveLength" format="dimension"/>
+        <attr name="fillMarginBottom" format="dimension"/>
+    </declare-styleable>
+
+</resources>

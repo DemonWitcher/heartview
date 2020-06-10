@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -29,11 +30,13 @@ public class SweetHeartView extends FrameLayout {
 
     public SweetHeartView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        initAttrs(attrs);
         init();
     }
 
     public SweetHeartView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAttrs(attrs);
         init();
     }
 
@@ -43,23 +46,38 @@ public class SweetHeartView extends FrameLayout {
     private FillView fillView;
     private ImageView borderView;
 
+    private int mHeartHeight;
+    private int mWaveHeight;
+
     private void init(){
         LayoutInflater.from(getContext()).inflate(R.layout.view_sweet_heart,this);
         borderView = findViewById(R.id.iv_border);
         fillView = findViewById(R.id.fill_view);
         fillView.setmWaveLength(L.dp2px(getContext(),100));
-        fillView.setmWaveHeight(L.dp2px(getContext(),7));
+        fillView.setmWaveHeight(L.dp2px(getContext(),6));
+        FrameLayout.LayoutParams fillLp = (LayoutParams) fillView.getLayoutParams();
+        fillLp.width = L.dp2px(getContext(),104);
+        fillLp.height = L.dp2px(getContext(),88);
+    }
+    private void initAttrs(AttributeSet attrs) {
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.SweetHeartView);
+        mHeartHeight = (int) ta.getDimension(R.styleable.SweetHeartView_heartHeight, 140);
+        float fillHeight = ta.getDimension(R.styleable.SweetHeartView_fillHeight, 140);
+        float waveHeight = ta.getDimension(R.styleable.SweetHeartView_waveHeight, 140);
+        float waveLength = ta.getDimension(R.styleable.SweetHeartView_waveLength, 140);
+        float fillMarginBottom = ta.getDimension(R.styleable.SweetHeartView_fillMarginBottom, 140);
+        ta.recycle();
     }
 
     private void resetRes() {
         Bitmap bt = BitmapFactory.decodeResource(getResources(),R.mipmap.ic_lv0_boder);
         borderView.setImageResource(R.mipmap.ic_lv0_boder);
         ViewGroup.LayoutParams fillLp = getLayoutParams();
-        fillLp.height = L.dp2px(getContext(),140);
+        fillLp.height = mHeartHeight;
         int btWidth = bt.getWidth();
         int btHeight = bt.getHeight();
         fillLp.width = (int) (fillLp.height * (float)btWidth/btHeight);
-        //高度写死140dp 宽度等比算
+        //大心高度写死140dp 宽度等比算
         switch (level) {
             case 0: {
                 fillView.setHeartColor(Color.parseColor("#F5515F"), Color.parseColor("#F140AA"),R.mipmap.ic_heart_fill0);

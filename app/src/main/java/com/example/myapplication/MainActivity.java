@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.bt5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                simpleSweetHeartView0.setProgress(100,90,true,false);
+                simpleSweetHeartView0.setProgress(100,40,true,true);
                 animSweetHeartView.setProgress(100,100,true,false);
             }
         });

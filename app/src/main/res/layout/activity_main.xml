@@ -2,12 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#000000"
     android:orientation="vertical">
 
     <com.example.myapplication.SweetHeartView
         android:id="@+id/sshv0"
         android:layout_width="140dp"
+        app:heartHeight="140dp"
         android:layout_height="140dp" />
 
     <SeekBar
