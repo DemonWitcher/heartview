@@ -46,16 +46,13 @@ public class FillView extends View {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setStrokeWidth(1);
 
-        mWaveLength = L.dp2px(getContext(), 100);
         mPath = new Path();
         mWaveHeight = L.dp2px(getContext(), 7);
     }
 
     public int mWaveHeight;
 
-    private int mWaveLength;
 
     private Path mPath;
 
@@ -68,14 +65,24 @@ public class FillView extends View {
         L.i("percent:" + percent + ",progress:" + progress + ",max:" + max);
         percent = 1f - percent;
 
+
+        int canvasWidth = canvas.getWidth();
+        int canvasHeight = canvas.getHeight();
+        int layerId = canvas.saveLayer(0, 0, canvasWidth, canvasHeight, null, Canvas.ALL_SAVE_FLAG);
+
         LinearGradient backGradient = new LinearGradient(getMeasuredWidth() / 2, getMeasuredHeight() * percent,
                 getMeasuredWidth() / 2, getMeasuredHeight(),
                 new int[]{mStartColor, mEndColor},
-//                new int[]{Color.GREEN, Color.GREEN},
                 null, Shader.TileMode.CLAMP);
         mPaint.setShader(backGradient);
 
+        Rect src = new Rect(0, (int) (bitmapFillHeart.getHeight() * percent), bitmapFillHeart.getWidth(), bitmapFillHeart.getHeight());
+        RectF rectF = new RectF(0, getMeasuredHeight() * percent, getMeasuredWidth(), getMeasuredHeight());
+        canvas.drawBitmap(bitmapFillHeart, src, rectF, mPaint);
 
+        mPaint.setShader(null);
+
+        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         if (progress == max) {
             canvas.drawRect(0, getMeasuredHeight() * percent, getMeasuredWidth(), getMeasuredHeight(), mPaint);
         } else {
@@ -95,12 +102,8 @@ public class FillView extends View {
             mPath.close();
             canvas.drawPath(mPath, mPaint);
         }
-
-        Rect src = new Rect(0, (int) (bitmapFillHeart.getHeight() * percent), bitmapFillHeart.getWidth(), bitmapFillHeart.getHeight());
-        RectF rectF = new RectF(0, getMeasuredHeight() * percent, getMeasuredWidth(), getMeasuredHeight());
-        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-        canvas.drawBitmap(bitmapFillHeart, src, rectF, mPaint);
         mPaint.setXfermode(null);
+        canvas.restoreToCount(layerId);
     }
 
     public int getmWaveHeight() {
@@ -109,14 +112,6 @@ public class FillView extends View {
 
     public void setmWaveHeight(int mWaveHeight) {
         this.mWaveHeight = mWaveHeight;
-    }
-
-    public int getmWaveLength() {
-        return mWaveLength;
-    }
-
-    public void setmWaveLength(int mWaveLength) {
-        this.mWaveLength = mWaveLength;
     }
 
     public int getMax() {

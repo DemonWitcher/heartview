@@ -40,7 +40,6 @@ public class AnimSweetHeartView extends FrameLayout {
         LayoutInflater.from(getContext()).inflate(R.layout.view_anim_sweet_heart, this);
         borderView = findViewById(R.id.iv_border);
         fillView = findViewById(R.id.fill_view);
-        fillView.setmWaveLength(L.dp2px(getContext(),15));
         fillView.setmWaveHeight(L.dp2px(getContext(),1));
     }
 

@@ -53,15 +53,16 @@ public class SweetHeartView extends FrameLayout {
         LayoutInflater.from(getContext()).inflate(R.layout.view_sweet_heart,this);
         borderView = findViewById(R.id.iv_border);
         fillView = findViewById(R.id.fill_view);
-        fillView.setmWaveLength(L.dp2px(getContext(),100));
-        fillView.setmWaveHeight(L.dp2px(getContext(),6));
+        fillView.setmWaveHeight(L.dp2px(getContext(),2));
         FrameLayout.LayoutParams fillLp = (LayoutParams) fillView.getLayoutParams();
-        fillLp.width = L.dp2px(getContext(),104);
-        fillLp.height = L.dp2px(getContext(),88);
+//        fillLp.width = L.dp2px(getContext(),104);
+//        fillLp.height = L.dp2px(getContext(),88);
+        fillLp.width = L.dp2px(getContext(),32);
+        fillLp.height = L.dp2px(getContext(),27);
     }
     private void initAttrs(AttributeSet attrs) {
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.SweetHeartView);
-        mHeartHeight = (int) ta.getDimension(R.styleable.SweetHeartView_heartHeight, 140);
+        mHeartHeight = (int) ta.getDimension(R.styleable.SweetHeartView_heartHeight, 44);
         float fillHeight = ta.getDimension(R.styleable.SweetHeartView_fillHeight, 140);
         float waveHeight = ta.getDimension(R.styleable.SweetHeartView_waveHeight, 140);
         float waveLength = ta.getDimension(R.styleable.SweetHeartView_waveLength, 140);
